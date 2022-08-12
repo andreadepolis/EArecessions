@@ -1,5 +1,19 @@
 
 function Recessions = getEArecessions()
+% The function retrieves the most recent EABCN recession announcement and
+% computes the relavitve datenum values. Requires a network connection.
+%
+% Output: Recessions - Rx2 matrix of datenum values. The first column
+%           contains the start dates of the R recessions and the last
+%           column the relative end date.
+%
+% To plot recession bands for the Euro Area, use:
+% recessionplot('Recessions', getEArecessions)
+%                   or
+% EArec = getEArecessions ;
+% recessionplot('Recessions', EArec)
+%
+% Andrea De Polis, 2022 (a.de-polis@warwick.ac.uk)
 
 wo = weboptions ;
 wo.Timeout = 30 ;
@@ -17,7 +31,7 @@ ceprdates = webread(getlink) ;
 dates = ceprdates.Dates ;
 recid = logical(ceprdates.PeakExcluded) ;
 
-q2m = @(x) 1*(x == 0) + 4*(x == .25) + 7*(x == .5) + 10*(x == .75) ; 
+q2m = @(x) 1*(x == 0) + 4*(x == .25) + 7*(x == .5) + 10*(x == .75) ;
 
 y1 = fix(dates(1)) ;
 m1 = q2m(mod(dates(1), 1)) ;
@@ -35,12 +49,9 @@ p2 = find(diff(p) ~= 1) ;
 
 P1 = D([1 p2' + 1]) ;
 P2 = D([p2' end]) ;
- 
+
 C = zeros(size(P1, 1), 2) ;
 C(:, 1) = P1 ;
 C(:, 2) = P2 ;
 
 Recessions = C ;
-
-
-
