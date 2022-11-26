@@ -1,9 +1,11 @@
 function Recessions = getEArecessions()
 % The function retrieves the most recent EABCN recession announcement and
-% computes the relavitve datenum values. Requires a network connection.
+% computes the relavitve datenum values. 
+%                     
+%                 ** Requires a network connection. **
 %
 % Output: Recessions - Rx2 matrix of datenum values. The first column
-%           contains the start dates of the R recessions and the last
+%           contains the start dates of the recessions and the last
 %           column the relative end date.
 %
 % To plot recession bands for the Euro Area, use:
