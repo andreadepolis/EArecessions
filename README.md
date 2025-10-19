@@ -16,7 +16,7 @@ provided the _x-axis_ of the current figure is of `datetime` type.
 
 *Note:* requires a network connection.
 
-<sub>Thank to Anastasia Allayioti (ECB) for suggeting changes to improve the functionality.</sub>
+<sub>Thanks to Anastasia Allayioti (ECB) for suggeting changes to improve the functionality.</sub>
 
 
 
