@@ -19,13 +19,13 @@ function Recessions = getEArecessions()
 wo = weboptions ;
 wo.Timeout = 30 ;
 
-getHTML  = webread('https://eabcn.org/dc/recession-indicators') ;
+getHTML  = webread('https://eabcn.org/dbc/peaksandtroughs/chronology-euro-area-business-cycles') ;
 readHTML = htmlTree(getHTML) ;
 
 subtree1 =  findElement(readHTML, "A") ;
 subtree2 = getAttribute(subtree1, "href") ;
 
-getlink  = subtree2(contains(subtree2, 'cepr_recession_indicator')) ;
+getlink  = subtree2(contains(subtree2, 'cepr_recession_indicator', 'IgnoreCase', true)) ;
 recdates = webread(getlink) ;
 
 dates = recdates.Dates ;
